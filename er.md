@@ -3,7 +3,8 @@ erDiagram
 USER ||--o{ EVENT : ""
 EVENT ||--|| JENRE : ""
 USER ||--|| MYPAGE : ""
-
+MYPAGE ||--o{ JOINEDEVENT : ""
+MYPAGE ||--o{ HOSTEDEVENT : ""
 
 
 
@@ -39,9 +40,34 @@ string jenre
 
 MYPAGE {
 integer id  PK
-string joinedHistory
-string hostedHistory
+integer user_id FK
+string joinedEventHistory
+string hostedEventHistory
 string favEvent
+}
+
+JOINEDEVENT {
+integer id PK
+integer event_id FK
+integer jenre_id FK
+string title
+date date
+time time
+string location
+string overView
+integer liked
+}
+
+HOSTEDEVENT {
+integer id PK
+integer event_id FK
+integer jenre_id FK
+string title
+date date
+time time
+string location
+string overView
+integer liked
 }
 
 ```
