@@ -1,41 +1,47 @@
-
 ```mermaid
 erDiagram
 USER ||--o{ EVENT : ""
 EVENT ||--|| JENRE : ""
-USER ||--|| MYPAGE : "" 
+USER ||--|| MYPAGE : ""
 
 
 
 
-USER {  
-number id  
-string name  
-string address  
-string email  
-string password  
-number phonenumber 
+USER {
+integer id  PK
+integer user_id FK
+string name
+string address
+string email
+string password
+integer phonenumber
 }
 
 
-EVENT {  
-number id  
-string eventTitle
-date eventDate  
-time eventTime  
-string location  
-string eventHost
-string eventOverView
-
-}  
-
-
-JENRE {  
-string jenre  
+EVENT {
+integer id  PK
+integer user_id FK
+integer jenre_id FK
+string title
+date date
+time time
+string location
+integer join
+string overView
+integer liked
 }
 
-MYPAGE {  
-string joinedHistory  
+
+JENRE {
+integer id PK
+string jenre
+}
+
+MYPAGE {
+integer id  PK
+string joinedHistory
 string hostedHistory
+string favEvent
 }
+
 ```
