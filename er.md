@@ -43,7 +43,7 @@ integer id  PK
 integer user_id FK
 string joinedEventHistory
 string hostedEventHistory
-string favEvent
+integer favEvent
 }
 
 JOINEDEVENT {
