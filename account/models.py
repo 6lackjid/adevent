@@ -14,7 +14,7 @@ def upload_icon_path(instance, filename):
 
 class Account(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
-    username = models.CharField(verbose_name='ユーザー名', max_length=10, unique=True, validators=[MinLengthValidator(5,), RegexValidator(r'^[a-zA-Z0-9]*$',)], )
+    username = models.CharField(verbose_name='ユーザー名', max_length=20, unique=True, validators=[MinLengthValidator(5,), RegexValidator(r'^[a-zA-Z0-9]*$',)], )
     email = models.EmailField(verbose_name='メールアドレス', max_length=50, unique=True)
     
     last_name = models.CharField(max_length=10, verbose_name='姓')

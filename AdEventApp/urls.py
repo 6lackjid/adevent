@@ -12,8 +12,8 @@ urlpatterns = [
   
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),                   #'api'
-    path('events/', include('events.urls')),            #, 'events'
-    path('account/', include('account.urls', 'account')),
+    # path('events/', include('events.urls')),            #, 'events'
+    # path('account/', include('account.urls', 'account')),
     path('auth/', include('djoser.urls.jwt')),
     
     
