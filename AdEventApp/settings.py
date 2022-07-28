@@ -70,7 +70,6 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     
     'account.apps.AccountConfig',
-    'jenre.apps.JenreConfig',
     
     
     

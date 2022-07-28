@@ -20,9 +20,24 @@ class Account(models.Model):
     last_name = models.CharField(max_length=10, verbose_name='姓')
     first_name = models.CharField(max_length=10, verbose_name='名')
     password = models.CharField(max_length=60, verbose_name='パスワード')
-    address = models.CharField(max_length=100, verbose_name='住所')
+    zip_code = models.CharField(
+        verbose_name='郵便番号',max_length=8,blank=True,
+    )
+    address1 = models.CharField(
+        verbose_name='都道府県',max_length=40,blank=True,
+    )
+    address2 = models.CharField(
+        verbose_name='市区町村番地',max_length=40,blank=True,
+    )
+    address3 = models.CharField(
+        verbose_name='建物名',max_length=40,blank=True,
+    )
+    
     phone_number = models.IntegerField(verbose_name='電話番号')
     user_icon = models.ImageField(blank=True, null=True, upload_to=upload_icon_path, verbose_name='アイコン')
+    self_introduction = models.TextField(blank=True, max_length=300, verbose_name='自己紹介')
+    
+    
     date_joined = models.DateTimeField(verbose_name='アカウント作成日')
     last_login =models.DateTimeField(auto_now_add=True, verbose_name='最終ログイン日')
     is_staff = models.BooleanField(default=False)

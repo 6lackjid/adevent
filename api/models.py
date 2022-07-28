@@ -14,7 +14,7 @@ class MyUserManager(BaseUserManager):
             raise ValueError('メールアドレスを入力してください')
         
         
-        user = self.model(email = self.normalize_email(email))
+        user = self.model(email=self.normalize_email(email))
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -26,8 +26,9 @@ class MyUserManager(BaseUserManager):
         user.is_admin = True
         user.is_active = True
         user.is_staff = True
-        user.is_superadmin = True
+        # user.is_superadmin = True
         user.is_superuser = True
+        user.set_password(password)
         user.save(using=self._db)
         return user
     
@@ -43,5 +44,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     def __str__(self):
         return self.email
+
+    class Meta:
+        verbose_name = 'ユーザー'
+        verbose_name_plural = 'ユーザー'
 
     
