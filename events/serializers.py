@@ -4,15 +4,15 @@ from .models import Event
 
 
 class EventSerializer(serializers.ModelSerializer):
-    time = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
+    time = serializers.DateTimeField(format=" %Y年%m月%d日: %H時%M分 ")
     
     
     class Meta:
         model = Event
-        fields ='__all__'
+        fields = ('id', 'jenre', 'user_id','title', 'time', 'location', 'eventpics' , 'over_view')
         
         
         # extra_kwargs = {'id': {'read_only': True}}
         
-#   ('id', 'user_id', 'title', 'time', 'location', 'over_view')
+#   
 

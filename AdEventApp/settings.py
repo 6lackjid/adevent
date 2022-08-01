@@ -47,7 +47,7 @@ DEBUG=env('DEBUG')
 DEBUG = True
 # os.getenv('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -71,6 +71,15 @@ INSTALLED_APPS = [
     
     'account.apps.AccountConfig',
     
+    'allauth', 
+    # 'allauth.account', 
+    'allauth.socialaccount', 
+    'rest_auth',
+    'rest_auth.registration', 
+
+
+
+    'rest_framework.authtoken',
     
     
     
@@ -90,6 +99,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:3000',
     'http://localhost:3000',
 ]
 
@@ -118,16 +128,21 @@ AUTH_USER_MODEL ='api.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAdminUser',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        # ブラウザにログイン・ログアウトの機能を提供する
+        'rest_framework.authentication.SessionAuthentication',
+        # トークン認証の機能を提供する
+        'rest_framework.authentication.TokenAuthentication',
     ],
 }
 
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=90),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=180),
 }
 
 
@@ -141,7 +156,7 @@ DATABASES = {
     }
 }
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -159,7 +174,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer'
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

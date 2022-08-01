@@ -11,11 +11,13 @@ from . import settings
 urlpatterns = [
   
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),                   #'api'
+    path('api/', include('events.urls')),
+    path('api-auth/', include('rest_framework.urls')),#'api'
     # path('events/', include('events.urls')),            #, 'events'
-    # path('account/', include('account.urls', 'account')),
+    path('api/users/', include('api.urls')),
     path('auth/', include('djoser.urls.jwt')),
-    
+    # path('api/rest-auth/', include('rest_auth.urls')),
+    # path('api/rest-auth/registration/', include('rest_auth.registration.urls')),
     
     
 ]

@@ -19,7 +19,7 @@ class AccountViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(username=self.request.user)
 
-class MyAccountListView(generics.ListAPIView):
+class MyAccountListView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Account.objects.all()
     serializer_class = serializers.AccountSerializer
     

@@ -35,17 +35,17 @@ class Account(models.Model):
     
     phone_number = models.IntegerField(verbose_name='電話番号')
     user_icon = models.ImageField(blank=True, null=True, upload_to=upload_icon_path, verbose_name='アイコン')
-    self_introduction = models.TextField(blank=True, max_length=300, verbose_name='自己紹介')
+    # self_introduction = models.TextField(blank=True, max_length=300, verbose_name='自己紹介')
     
     
-    date_joined = models.DateTimeField(verbose_name='アカウント作成日')
-    last_login =models.DateTimeField(auto_now_add=True, verbose_name='最終ログイン日')
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
-    is_superadmin = models.BooleanField(default=False)
-    is_anonymous = models.BooleanField(default=False)
-    is_authenticated = models.BooleanField(default=True)
+    # date_joined = models.DateTimeField(verbose_name='アカウント作成日')
+    # last_login =models.DateTimeField(auto_now_add=True, verbose_name='最終ログイン日')
+    # is_staff = models.BooleanField(default=False)
+    # is_active = models.BooleanField(default=False)
+    # is_admin = models.BooleanField(default=False)
+    # is_superadmin = models.BooleanField(default=False)
+    # is_anonymous = models.BooleanField(default=False)
+    # is_authenticated = models.BooleanField(default=True)
     
     class Meta:
         verbose_name = 'アカウント'
